@@ -1,6 +1,6 @@
 ﻿# Project Template
 
-A comprehensive Python project template designed for collaborative AI-assisted development.
+A comprehensive Python project template designed for collaborative development with Claude.
 
 ## Quick Start
 
@@ -70,7 +70,7 @@ python -m src.main
 _project-template/
 ├── .roo/                          # AI workflow and rules
 │   ├── rules/
-│   │   ├── 00-ai-roles.md         # Copilot/Developer responsibilities
+│   │   ├── 00-ai-roles.md         # Claude/Developer responsibilities
 │   │   ├── 01-coding-standards.md # Code style guidelines
 │   │   └── 02-architecture.md     # Project structure
 │   ├── prompts/
@@ -89,17 +89,31 @@ _project-template/
 └── .gitignore                     # Git ignore rules
 \\\
 
-## Model Selection Guide
+## Roo Prompt Generator
 
-| Task | Recommended Model | Rationale |
-|------|-------------------|-----------|
-| Architecture | Claude 3.5 Sonnet | Complex reasoning |
-| Implementation | Claude 3.5 Sonnet | Code generation |
-| Testing | Claude 3.5 Haiku | Straightforward patterns |
-| Documentation | Claude 3.5 Sonnet | Comprehensive output |
-| Code Review | Claude 3.5 Sonnet | Deep analysis |
-| Debugging | Claude 3.5 Sonnet | Error diagnosis |
-| Refactoring | Claude 3.5 Sonnet | Large-scale changes |
+The Roo prompt generator creates structured, context-rich prompts for Claude to implement tasks efficiently.
+
+### When to Use
+Use the `pmt:` prefix for significant tasks:
+- Implementing features
+- Debugging complex issues
+- Refactoring modules
+- Generating tests
+- Major documentation updates
+
+**Example:**
+```
+pmt: Implement user authentication module with JWT tokens
+```
+
+### Workflow
+1. Developer provides task with `pmt:` prefix
+2. Roo gathers context and generates structured prompt
+3. Prompt is written to `.roo/prompts/ACTIVE.md`
+4. Claude reads ACTIVE.md and implements task
+5. Previous prompts are archived with timestamps
+
+**See .roo/rules/03-prompt-generation.md for full documentation.**
 
 ## Testing
 
@@ -140,9 +154,10 @@ Additional packages for development, testing, and documentation:
 
 See .roo/rules/ for detailed guidelines:
 
-1. **00-ai-roles.md**: Defines role boundaries between developer and AI
+1. **00-ai-roles.md**: Defines role boundaries between Claude and Developer
 2. **01-coding-standards.md**: Code style and organization standards
 3. **02-architecture.md**: Project structure and module guidelines
+4. **03-prompt-generation.md**: Roo prompt generator workflow
 
 ## Contributing
 
